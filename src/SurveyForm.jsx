@@ -106,8 +106,9 @@ const SurveyForm = () => {
         .required('Feedback is required'),
     }),
     onSubmit: async (values) => {
+      console.log(values);
+      setSurveyData({ ...surveyData, ...values });
       if (validateFields()) {
-        setSurveyData({ ...surveyData, ...values });
         alert(JSON.stringify(surveyData, null, 2));
       } else {
         alert('Please fix the errors in the form');
@@ -118,6 +119,8 @@ const SurveyForm = () => {
   useEffect(() => {
     validateFields(formik.values);
   }, [formik.values]);
+
+  console.log(surveyData);
 
 
   const renderTechnologySection = () => (
